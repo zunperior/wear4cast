@@ -114,6 +114,8 @@ export default class Home extends Component {
               some source that is needed to complete the server-side rendering. <code>Widgets.js</code>'s
               <code>fetchData()</code> function is called before the widgets page is loaded, on either the server
               or the client, allowing all the widget data to be loaded and ready for the page to render.
+
+              The <Link to="/outfits">Widgets page</Link> <code>Outfits.js</code>
             </dd>
             <dt>Data loading errors</dt>
             <dd>
