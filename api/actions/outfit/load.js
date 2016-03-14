@@ -1,8 +1,8 @@
-const initialOutfits = [
-		{ id: 1, url: 'some url 1', info: 'some info 1' },
-		{ id: 2, url: 'some url 2', info: 'some info 2' }
-	];
-
+// const initialOutfits = [
+// 		{ id: 1, url: 'some url 1', info: 'some info 1' },
+// 		{ id: 2, url: 'some url 2', info: 'some info 2' }
+// 	];
+const initialOutfits = 'test';
 
 export function getOutfits(req) {
   let outfits = req.session.outfits;
