@@ -1,9 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import Helmet from 'react-helmet';
-//import {connect} from 'react-redux';
-//import {bindActionCreators} from 'redux';
-import {isLoaded, load as loadOutfits} from 'redux/modules/outfits';
+import {connect} from 'react-redux';
 import { asyncConnect } from 'redux-async-connect';
+import {isLoaded, load as loadOutfits} from 'redux/modules/outfits';
 
 @asyncConnect([{
   deferred: true,
@@ -13,10 +12,17 @@ import { asyncConnect } from 'redux-async-connect';
     }
   }
 }])
+@connect(
+    state => ({
+      outfits: state.outfits.data,
+      error: state.outfits.error,
+      loading: state.outfits.loading
+    }),
+    {}
+)
 export default class Outfits extends Component {
   static propTypes = {
-  //  outfits: PropTypes.array,
-    outfits: PropTypes.string,
+    outfits: PropTypes.array,
     error: PropTypes.string,
     loading: PropTypes.bool
   };
@@ -40,28 +46,11 @@ export default class Outfits extends Component {
 
         <div>
           {
-            // outfits && outfits.length && outfits.map(outfit => (
-            //   <p key={outfit.id}> {outfit.url} </p>))
-            outfits
+            outfits && outfits.length && outfits.map(outfit => (
+              <img key={outfit.id} src={outfit.url} />))
           }
         </div>
 			</div>
 			);
   }
 }
-
-
-
-// export default class Outfits extends Component {
-//
-//   render() {
-//
-//     return (
-//       <div className="container">
-//         <h1>Outfits</h1>
-//         <Helmet title="Outfits"/>
-//         <p>Outfits page, test text</p>
-//       </div>
-//     );
-//   }
-// }
