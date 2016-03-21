@@ -11,7 +11,7 @@ import {
     LoginSuccess,
     Outfits,
     Survey,
-    NotFound,
+    NotFound
   } from 'containers';
 
 export default (store) => {

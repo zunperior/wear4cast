@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { CounterButton, GithubButton } from 'components';
+import  {Forecast} from 'containers';
 import config from '../../config';
 import Helmet from 'react-helmet';
 
@@ -55,6 +56,9 @@ export default class Home extends Component {
             <CounterButton multireducerKey="counter3"/>
           </div>
 
+        <div>
+            <Forecast />
+        </div>
           <p>This starter boilerplate app uses the following technologies:</p>
 
           <ul>
