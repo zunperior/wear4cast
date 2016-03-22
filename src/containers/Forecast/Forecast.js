@@ -4,18 +4,19 @@ import {connect} from 'react-redux';
 import {fetchForecast} from 'redux/modules/weatherForecast';
 
 @connect(
-    state => ({forecast: state.forecast}),
+    state => ({forecast: state.weatherForecast.forecast}),
     {fetchForecast}
 )
 export default class Forecast extends Component {
   static propTypes = {
-    forecast: PropTypes.object,
+    //forecast: PropTypes.object,
+    forecast: PropTypes.string,
     fetchForecast: PropTypes.func.isRequired,
   }
 
   componentWillMount(){
     const {fetchForecast,forecast} = this.props;
-    if(forecast === undefined){
+    if(forecast === ''){
       fetchForecast('Toronto','Canada');
     }
   }
@@ -34,7 +35,7 @@ export default class Forecast extends Component {
 
         {forecast &&
 
-          <h1>{forecast.city.name}</h1>
+          <h1>{forecast}</h1>
         }
 
       </div>);

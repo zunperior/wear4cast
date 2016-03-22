@@ -8,7 +8,8 @@ const API_ID = '213cf721f68d330f62e76b8f4764a603';
 const FORECAST_URL_WITH_API_ID = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_ID}`;
 
 const initialState = {
-  forecast: []
+  //forecast: []
+  forecast: ''
 };
 
 // reducer is called once the data is available
@@ -17,7 +18,8 @@ export default function reducer(state = initialState, action = {}){
     case FETCH_FORECAST:
       return {
         ...state,
-        forecast: [action.payload.data]
+      //  forecast: [action.payload.data]
+        forecast: 'test forecast'
       };
     default:
       return state;
