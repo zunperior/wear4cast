@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
+import isEmpty from 'lodash.isempty';
+
 import {fetchForecast} from 'redux/modules/weatherForecast';
 
 @connect(
@@ -9,14 +11,13 @@ import {fetchForecast} from 'redux/modules/weatherForecast';
 )
 export default class Forecast extends Component {
   static propTypes = {
-    //forecast: PropTypes.object,
-    forecast: PropTypes.string,
+    forecast: PropTypes.object,
     fetchForecast: PropTypes.func.isRequired,
   }
 
   componentWillMount(){
     const {fetchForecast,forecast} = this.props;
-    if(forecast === ''){
+    if(isEmpty(forecast)){
       fetchForecast('Toronto','Canada');
     }
   }
@@ -31,11 +32,11 @@ export default class Forecast extends Component {
 
     return (
       <div className={styles.forecast + ' container'}>
-        <h1>Forecast</h1>
+        <h1>{'Forecast'}</h1>
 
-        {forecast &&
+        {forecast && forecast.city &&
 
-          <h1>{forecast}</h1>
+          <h1>{forecast.city.name}</h1>
         }
 
       </div>);
