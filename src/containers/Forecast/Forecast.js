@@ -38,6 +38,9 @@ export default class Forecast extends Component {
 
           <h1>{forecast.city.name}</h1>
         }
+        <div>
+          <i className="wi wi-day-sunny"></i>
+        </div>
 
       </div>);
 

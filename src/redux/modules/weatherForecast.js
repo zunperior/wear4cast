@@ -27,7 +27,8 @@ export default function reducer(state = initialState, action){
 
 // Action Creator (will be called in container)
 export function fetchForecast(city, country){
-  const requestUrl = `${FORECAST_URL_WITH_API_ID}&q=${city},${country}`;
+  const units = 'units=metric'
+  const requestUrl = `${FORECAST_URL_WITH_API_ID}&q=${city},${country}&${units}`;
 
   // this is promise that will be resolved by redux-promise into data once data is fetched
   const promiseRequest = axios.get(requestUrl);
