@@ -2,7 +2,31 @@ import React, {Component, PropTypes} from 'react';
 import Helmet from 'react-helmet';
 import {connect} from 'react-redux';
 import { asyncConnect } from 'redux-async-connect';
-import {isLoaded, load as loadOutfits} from 'redux/modules/outfits';
+import {isLoaded, load as loadOutfits, changeOutfit} from 'redux/modules/outfits';
+
+import  {CurrentOutfit} from 'containers';
+
+function getNextIndex(currentIndex, arrayLength){
+  const nextIndex = currentIndex + 1;
+  if (nextIndex >= arrayLength)
+  {
+    return 0;
+  }
+
+  return nextIndex;
+}
+
+function selectNextOutfit(outfits, currentOutfitIndex, changeOutfit)
+{
+  if(outfits && outfits.length > 0)
+  {
+    const now = new Date();
+
+    console.info(`Next Outfit call (${now})`);
+    const nextIndex = getNextIndex(currentOutfitIndex, outfits.length);
+    changeOutfit(outfits[nextIndex], nextIndex);
+  }
+}
 
 @asyncConnect([{
   deferred: true,
@@ -16,21 +40,38 @@ import {isLoaded, load as loadOutfits} from 'redux/modules/outfits';
     state => ({
       outfits: state.outfits.data,
       error: state.outfits.error,
-      loading: state.outfits.loading
+      loading: state.outfits.loading,
+      currentOutfit: state.outfits.selectedOutfit,
+      selectedOutfitIndex: state.outfits.selectedOutfitIndex
     }),
-    {}
+    {changeOutfit}
 )
 export default class Outfits extends Component {
   static propTypes = {
     outfits: PropTypes.array,
-    error: PropTypes.string,
-    loading: PropTypes.bool
+    error: PropTypes.object,
+    loading: PropTypes.bool,
+    selectedOutfitIndex: PropTypes.number,
+    currentOutfit: PropTypes.shape({
+      id: PropTypes.number,
+      url: PropTypes.string
+    }),
+    changeOutfit: PropTypes.func.isRequired
   };
 
-  // DispalyName = 'Outfits';
+  // componentDidMount(){
+  //   const {outfits, selectedOutfitIndex, changeOutfit} = this.props;
+  //   setTimeout(() => selectNextOutfit(outfits, selectedOutfitIndex, changeOutfit), 5000);
+  // }
+
+ componentDidUpdate()
+ {
+   const {outfits, selectedOutfitIndex, changeOutfit} = this.props;
+   setTimeout(() => selectNextOutfit(outfits, selectedOutfitIndex, changeOutfit), 5000);
+ }
 
   render() {
-    const {outfits, loading} = this.props;
+    const {loading, outfits} = this.props;
 
     let refreshClassName = 'fa fa-refresh';
     if (loading) {
@@ -44,10 +85,11 @@ export default class Outfits extends Component {
 				<h1>{'Outfits'}</h1>
 				<Helmet title="Outfits"/>
 
+
         <div>
           {
-            outfits && outfits.length && outfits.map(outfit => (
-              <img key={outfit.id} src={outfit.url} />))
+            outfits && outfits.length &&
+            <CurrentOutfit />
           }
         </div>
 			</div>

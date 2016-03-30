@@ -22,10 +22,11 @@ export default class CounterButton extends Component {
     let {className} = this.props;
     className += ' btn btn-default';
     return (
-      <button className={className} onClick={increment}>
-        You have clicked me {count} time{count === 1 ? '' : 's'}.
+      <button className={className}
+        onClick={increment}
+      >
+        {'You have clicked me '}{count} {' time '}{count === 1 ? '' : 's'}
       </button>
     );
   }
 }
-

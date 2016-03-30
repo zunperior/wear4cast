@@ -1,9 +1,12 @@
 const LOAD = 'redux-example/outfits/LOAD';
 const LOAD_SUCCESS = 'redux-example/outfits/LOAD_SUCCESS';
 const LOAD_FAIL = 'redux-example/outfits/LOAD_FAIL';
+const CHANGE_OUTFIT = 'change_outfit';
 
 const initialState = {
-  loaded: false
+  loaded: false,
+  selectedOutfit: {},
+  selectedOutfitIndex: 0
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -19,6 +22,8 @@ export default function reducer(state = initialState, action = {}) {
         loading: false,
         loaded: true,
         data: action.result,
+        selectedOutfit: action.result[0],
+        selectedOutfitIndex: 0,
         error: null
       };
     case LOAD_FAIL:
@@ -27,7 +32,15 @@ export default function reducer(state = initialState, action = {}) {
         loading: false,
         loaded: false,
         data: null,
+        selectedOutfit: {},
+        selectedOutfitIndex: 0,
         error: action.error
+      };
+    case CHANGE_OUTFIT:
+      return {
+        ...state,
+        selectedOutfit: action.selectedOutfit,
+        selectedOutfitIndex: action.selectedOutfitIndex
       };
 
     default:
@@ -39,9 +52,18 @@ export function isLoaded(globalState) {
   return globalState.outfits && globalState.outfits.loaded;
 }
 
+// Action Creator
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('/outfit/load/param1/param2') // params not used, just shown as demonstration
+  };
+}
+
+export function changeOutfit(selectedOutfit, selectedOutfitIndex) {
+  return {
+    type: CHANGE_OUTFIT,
+    selectedOutfit: selectedOutfit,
+    selectedOutfitIndex: selectedOutfitIndex
   };
 }
