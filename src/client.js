@@ -36,14 +36,20 @@ global.socket = initSocket();
 
 const component = (
   <Router render={(props) =>
-        <ReduxAsyncConnect {...props} helpers={{client}} filter={item => !item.deferred} />
-      } history={history}>
+        <ReduxAsyncConnect {...props}
+          helpers={{client}}
+          filter={item => !item.deferred}
+        />
+      } history={history}
+  >
     {getRoutes(store)}
   </Router>
 );
 
 ReactDOM.render(
-  <Provider store={store} key="provider">
+  <Provider store={store}
+    key="provider"
+  >
     {component}
   </Provider>,
   dest
@@ -60,7 +66,9 @@ if (process.env.NODE_ENV !== 'production') {
 if (__DEVTOOLS__ && !window.devToolsExtension) {
   const DevTools = require('./containers/DevTools/DevTools');
   ReactDOM.render(
-    <Provider store={store} key="provider">
+    <Provider store={store}
+      key="provider"
+    >
       <div>
         {component}
         <DevTools />

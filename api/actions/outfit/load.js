@@ -1,61 +1,50 @@
 const initialOutfits = [
-		{ id: 1,
-      url: 'http://oi63.tinypic.com/2nr3hoi.jpg',
-      items:
-        [
-          { id: 11,
-            link: 'some link 11',
-            imgUrl: 'some image url 11',
-            descr: 'some description 11',
-            price: 5.99
-          },
-          { id: 12,
-            link: 'some link 12',
-            imgUrl: 'some image url 12',
-            descr: 'some description 12',
-            price: 10.99
-          }
-        ]
-    },
-    { id: 2,
+    { id: 5,
       url: 'http://oi68.tinypic.com/t4x08z.jpg',
       items:
         [
-          { id: 21,
-            link: 'some link 21',
-            imgUrl: 'some image url 21',
-            descr: 'some description 11',
-            price: 25.00
+          { id: 51,
+            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=85424&vid=1&pid=762150003',
+            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0006/518/296/cn6518296.jpg',
+            descr: 'Tailored-Fit Navy Italian Wool Suit Jacket',
+            price: 495.00
           },
-          { id: 22,
-            link: 'some link 22',
-            imgUrl: 'some image url 22',
-            descr: 'some description 22',
-            price: 34.99
-          },
-          { id: 23,
-            link: 'some link 23',
-            imgUrl: 'some image url 23',
-            descr: 'some description 23',
-            price: 56.99
+          { id: 52,
+            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1050643&vid=1&pid=184617003',
+            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/776/018/cn10776018.jpg',
+            descr: 'Camden-Fit Non-Iron Oxford Shirt',
+            price: 110.00
           }
         ]
     },
-    { id: 3,
+		{ id: 6,
+      url: 'http://oi63.tinypic.com/2nr3hoi.jpg',
+      items:
+        [
+          { id: 61,
+            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1053856&vid=1&pid=184993013',
+            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/743/517/cn10743517.jpg',
+            descr: 'Vintage U-Neck Tee',
+            price: 35.00
+          }
+        ]
+    },
+
+    { id: 7,
       url: 'http://oi64.tinypic.com/1zlpqn6.jpg',
       items:
         [
-          { id: 31,
-            link: 'some link 31',
-            imgUrl: 'some image url 31',
-            descr: 'some description 31',
-            price: 100.99
+          { id: 71,
+            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1051348&vid=1&pid=724291003',
+            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/459/290/cn10459290.jpg',
+            descr: 'Double-Breasted Trench',
+            price: 310.00
           },
-          { id: 32,
-            link: 'some link 32',
-            imgUrl: 'some image url 32',
-            descr: 'some description 32',
-            price: 200.99
+          { id: 72,
+            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1051345&vid=1&pid=175290003',
+            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/575/855/cn10575855.jpg',
+            descr: 'Water-Repellent Cotton Jacket',
+            price: 124.00
           }
         ]
     },

@@ -38,35 +38,51 @@ export default class WidgetForm extends Component {
       <tr className={submitting ? styles.saving : ''}>
         <td className={styles.idCol}>{id.value}</td>
         <td className={styles.colorCol}>
-          <select name="color" className="form-control" {...color}>
-            {colors.map(valueColor => <option value={valueColor} key={valueColor}>{valueColor}</option>)}
+          <select name="color"
+            className="form-control"
+            {...color}
+          >
+            {colors.map(valueColor =>
+              <option value={valueColor}
+                key={valueColor}
+              >
+              {valueColor}
+            </option>)}
           </select>
           {color.error && color.touched && <div className="text-danger">{color.error}</div>}
         </td>
         <td className={styles.sprocketsCol}>
-          <input type="text" className="form-control" {...sprocketCount}/>
+          <input type="text"
+            className="form-control"
+            {...sprocketCount}
+          />
           {sprocketCount.error && sprocketCount.touched && <div className="text-danger">{sprocketCount.error}</div>}
         </td>
         <td className={styles.ownerCol}>
-          <input type="text" className="form-control" {...owner}/>
+          <input type="text"
+            className="form-control"
+            {...owner}
+          />
           {owner.error && owner.touched && <div className="text-danger">{owner.error}</div>}
         </td>
         <td className={styles.buttonCol}>
           <button className="btn btn-default"
-                  onClick={() => editStop(formKey)}
-                  disabled={submitting}>
-            <i className="fa fa-ban"/> Cancel
+            onClick={() => editStop(formKey)}
+            disabled={submitting}
+          >
+            <i className="fa fa-ban"/> {'Cancel'}
           </button>
           <button className="btn btn-success"
-                  onClick={handleSubmit(() => save(values)
-                    .then(result => {
-                      if (result && typeof result.error === 'object') {
-                        return Promise.reject(result.error);
-                      }
-                    })
-                  )}
-                  disabled={pristine || invalid || submitting}>
-            <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> Save
+            onClick={handleSubmit(() => save(values)
+              .then(result => {
+                if (result && typeof result.error === 'object') {
+                  return Promise.reject(result.error);
+                }
+              })
+            )}
+            disabled={pristine || invalid || submitting}
+          >
+            <i className={'fa ' + (submitting ? 'fa-cog fa-spin' : 'fa-cloud')}/> {'Save'}
           </button>
           {saveError && <div className="text-danger">{saveError}</div>}
         </td>
