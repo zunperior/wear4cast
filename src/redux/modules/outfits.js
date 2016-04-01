@@ -21,7 +21,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        data: action.result,
+        outfitList: action.result,
         selectedOutfit: action.result[0],
         selectedOutfitIndex: 0,
         error: null
@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: false,
-        data: null,
+        outfitList: null,
         selectedOutfit: {},
         selectedOutfitIndex: 0,
         error: action.error

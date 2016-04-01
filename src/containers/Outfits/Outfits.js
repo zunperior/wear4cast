@@ -38,7 +38,7 @@ function selectNextOutfit(outfits, currentOutfitIndex, changeOutfit)
 }])
 @connect(
     state => ({
-      outfits: state.outfits.data,
+      outfits: state.outfits.outfitList,
       error: state.outfits.error,
       loading: state.outfits.loading,
       currentOutfit: state.outfits.selectedOutfit,
