@@ -4,9 +4,24 @@ import {connect} from 'react-redux';
 import isEmpty from 'lodash.isempty';
 import {fetchForecast} from 'redux/modules/weatherForecast';
 import {Line as LineChart} from 'react-chartjs';
+//import localDateTime from 'utils/timeUtil';
 
 // import moment from 'moment-timezone';
 // import coordinateTimezone from 'coordinate-tz';
+
+import moment from 'moment-timezone';
+import coordinateTimezone from 'coordinate-tz';
+
+function getTimezone(longitude, latitude){
+  return coordinateTimezone.calculate(latitude, longitude).timezone;
+}
+
+function localDateTime(unixDateTime, timezone){
+  const momentUnix = moment.unix(unixDateTime);
+  const unixDateTimeObj = momentUnix.toDate();
+  const localTime = moment(unixDateTimeObj).tz(timezone).format('YYYY-MM-DD HH:mm:ss');
+  return localTime;
+}
 
 function prepareGraphData(forecastData){
   var times = [];
@@ -14,9 +29,11 @@ function prepareGraphData(forecastData){
   var refLine = [];
   if (forecastData && forecastData.forecastDataPoints && forecastData.forecastDataPoints.length > 0)
   {
+    const timezone = getTimezone(forecastData.longitude, forecastData.latitude);
     for(let point of forecastData.forecastDataPoints)
     {
-      times.push(''+ point.datetimeUnix);
+      times.push(''+localDateTime(point.datetimeUnix, timezone));
+
       temperatures.push(Math.round(point.temperature));
       refLine.push(0);
     }
