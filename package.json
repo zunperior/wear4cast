@@ -108,6 +108,7 @@
     "chartjs": "^0.3.7",
     "compression": "^1.6.0",
     "coordinate-tz": "^0.1.2",
+    "es6-enum": "^1.0.3",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "file-loader": "^0.8.5",

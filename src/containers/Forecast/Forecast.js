@@ -79,7 +79,8 @@ export default class Forecast extends Component {
       country: PropTypes.string,
       longitude: PropTypes.number,
       latitude: PropTypes.number,
-      forecastDataPoints: PropTypes.array
+      forecastDataPoints: PropTypes.array,
+      currentWeather: PropTypes.object
     }),
     fetchForecast: PropTypes.func.isRequired
   };

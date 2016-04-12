@@ -1,6 +1,53 @@
+import Enum from 'es6-enum';
+
+export const CONDITION = Enum(
+  'SNOW',
+  'RAIN',
+  'WIND',
+  'ALL');
+
+//
+//  WINTER_SUPERCOLD    WINTER_COLD   WINTER_NORMAL   WINTER_WARM  WINTER_HOT
+//                                                                 SPRING_SUPERCOLD    SPRING_COLD   SPRING_NORMAL      SPRING_WARM   SPRING_HOT
+//                                                                 FALL_SUPERCOLD      FALL_COLD     FALL_NORMAL        FALL_WARM     FALL_HOT
+//                                                                                                   SUMMER_SUPERCOLD           SUMMER_COLD          SUMMER_NORMAL    SUMMER_WARM    SUMMER_HOT
+// ------------------+--------------+---------------+------------+-------------------+-------------+------------------+-------------+--------------+----------------+--------------+-----------------
+//                 -21             -8              -1            2                   5             9                 14            17             20               27             32
+export const SEASON = Enum(
+  'WINTER',
+  'SPRING',
+  'SUMMER',
+  'FALL'
+);
+
+export const TEMP_LEVEL = Enum(
+  'SUPERCOLD',
+  'COLD',
+  'NORMAL',
+  'WARM',
+  'HOT'
+);
+
+export const  STYLE = Enum(
+  'OUTDOORS',
+  'SPORTY',
+  'BEACH',
+  'RESORT',
+  'RESORT_DRESSEDUP',
+  'CLUB',
+  'FORMAL',
+  'CASUAL',
+  'SMART_CASUAL',
+  'BUSINESS'
+);
+
 const initialOutfits = [
     { id: 5,
       url: 'http://oi68.tinypic.com/t4x08z.jpg',
+      season: SEASON.WINTER,
+      temp_level: TEMP_LEVEL.COLD,
+      conditions: [CONDITION.SNOW, CONDITION.WIND],
+      style: STYLE.BUSINESS,
       items:
         [
           { id: 51,
@@ -19,6 +66,10 @@ const initialOutfits = [
     },
 		{ id: 6,
       url: 'http://oi63.tinypic.com/2nr3hoi.jpg',
+      season: SEASON.WINTER,
+      temp_level: TEMP_LEVEL.COLD,
+      conditions: [CONDITION.SNOW, CONDITION.WIND],
+      style: STYLE.BUSINESS,
       items:
         [
           { id: 61,
@@ -32,6 +83,10 @@ const initialOutfits = [
 
     { id: 7,
       url: 'http://oi64.tinypic.com/1zlpqn6.jpg',
+      season: SEASON.WINTER,
+      temp_level: TEMP_LEVEL.COLD,
+      conditions: [CONDITION.SNOW, CONDITION.WIND],
+      style: STYLE.BUSINESS,
       items:
         [
           { id: 71,

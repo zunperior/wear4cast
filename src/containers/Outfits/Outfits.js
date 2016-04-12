@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import {connect} from 'react-redux';
 import { asyncConnect } from 'redux-async-connect';
 import {isLoaded, load as loadOutfits, changeOutfit} from 'redux/modules/outfits';
-import {CurrentOutfit, Forecast} from 'containers';
+import {CurrentOutfit, Forecast, CurrentWeather} from 'containers';
 import {ClothingItemList as ClothingItems} from 'components';
 
 function getNextIndex(currentIndex, arrayLength){
@@ -82,6 +82,8 @@ export default class Outfits extends Component {
     return (
 
 			<div className={styles.outfits + ' container'}>
+        <CurrentWeather />
+
 				<h1>{'Outfits'}</h1>
 				<Helmet title="Outfits"/>
         <div>
@@ -96,7 +98,8 @@ export default class Outfits extends Component {
             <ClothingItems clothingItemList = {currentOutfit.items} />
           }
         </div>
-        <Forecast />
+        {/*<Forecast />*/}
+
 			</div>
 			);
   }

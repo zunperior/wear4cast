@@ -6,5 +6,6 @@ export default class WeatherForecastData {
     this.longitude = longitude;
     this.latitude = latitude;
     this.forecastDataPoints = [];
+    this.currWeather = {};
   }
 }

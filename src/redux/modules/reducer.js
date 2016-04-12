@@ -10,6 +10,7 @@ import info from './info';
 import widgets from './widgets';
 import outfits from './outfits';
 import weatherForecast from './weatherForecast';
+import currentWeather from './currentWeather';
 
 export default combineReducers({
   routing: routeReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   info,
   widgets,
   outfits,
-  weatherForecast
+  weatherForecast,
+  currentWeather
 });

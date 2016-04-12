@@ -10,3 +10,4 @@ export NotFound from './NotFound/NotFound';
 export Outfits from './Outfits/Outfits';
 export Forecast from './Forecast/Forecast';
 export CurrentOutfit from './CurrentOutfit/CurrentOutfit';
+export CurrentWeather from './CurrentWeather/CurrentWeather';
