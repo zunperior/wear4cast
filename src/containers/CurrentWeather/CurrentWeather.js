@@ -1,8 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-
-import isEmpty from 'lodash.isempty';
-import {fetchCurrentWeather} from 'redux/modules/currentWeather';
+// import {fetchCurrentWeather} from 'redux/modules/currentWeather';
 
 import moment from 'moment-timezone';
 import coordinateTimezone from 'coordinate-tz';
@@ -18,7 +16,7 @@ function localDateTime(unixDateTime, timezone){
   return localTime;
 }
 
-function prepareData(weatherData){
+function prepareCurrentWeatherData(weatherData){
   if (weatherData && weatherData.currWeather )
   {
     const timezone = getTimezone(weatherData.longitude, weatherData.latitude);
@@ -34,7 +32,7 @@ function prepareData(weatherData){
 
 @connect(
     state => ({currentWeather: state.currentWeather.currentWeather}),
-    {fetchCurrentWeather}
+    {}
 )
 export default class CurrentWeather extends Component {
   static propTypes = {
@@ -45,25 +43,13 @@ export default class CurrentWeather extends Component {
       latitude: PropTypes.number,
       forecastDataPoints: PropTypes.array,
       currentWeather: PropTypes.object
-    }),
-    fetchCurrentWeather: PropTypes.func.isRequired
+    })
   };
-
-  componentWillMount(){
-    const {fetchCurrentWeather, currentWeather} = this.props;
-    if(isEmpty(currentWeather)){
-      fetchCurrentWeather('Toronto','Canada');
-    }
-  }
-
-  componentWillUnmount() {
-    this.serverRequest.abort();
-  }
 
   render() {
     const {currentWeather} = this.props;
     const styles = require('./CurrentWeather.scss');
-    const data = prepareData(currentWeather);
+    const data = prepareCurrentWeatherData(currentWeather);
 
     return (
       <div className={styles.currentWeather + ' container'}>

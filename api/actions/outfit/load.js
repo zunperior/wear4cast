@@ -105,7 +105,50 @@ const initialOutfits = [
     },
 	];
 
-export function getOutfits(req) {
+// inclusive range check
+function inRange(val, min, max){
+  return (val>=min && val<=max);
+}
+
+function getFilter(temperature, date)
+{
+  //
+  //  WINTER_SUPERCOLD    WINTER_COLD   WINTER_NORMAL   WINTER_WARM  WINTER_HOT
+  //                                                                 SPRING_SUPERCOLD    SPRING_COLD   SPRING_NORMAL      SPRING_WARM   SPRING_HOT
+  //                                                                 FALL_SUPERCOLD      FALL_COLD     FALL_NORMAL        FALL_WARM     FALL_HOT
+  //                                                                                                   SUMMER_SUPERCOLD           SUMMER_COLD          SUMMER_NORMAL    SUMMER_WARM    SUMMER_HOT
+  // ------------------+--------------+---------------+------------+-------------------+-------------+------------------+-------------+--------------+----------------+--------------+-----------------
+  //                 -21             -8              -1            2                   5             9                 14            17             20               27             32
+
+  // WINTER_SUPERCOLD
+  if (temperature <= -21){
+    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.SUPERCOLD}];
+  }
+
+  // WINTER_COLD
+  if (inRange(temperature, -20, -8)){
+    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.COLD}];
+  }
+
+  // WINTER_NORMAL
+  if (inRange(temperature, -7, -1)){
+    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.NORMAL}];
+  }
+
+  // WINTER_WARM
+  if (inRange(temperature, 0, 2)){
+    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.NORMAL}];
+  }
+
+  // WINTER_HOT, SPRING_SUPERCOLD, FALL_SUPERCOLD
+  if (inRange(temperature, 0, 2)){
+    // TODO: 
+  }
+
+
+}
+export function getOutfits(req, params) {
+  console.log(params);
   let outfits = req.session.outfits;
   if (!outfits) {
     outfits = initialOutfits;
@@ -114,11 +157,11 @@ export function getOutfits(req) {
   return outfits;
 }
 
-export default function load(req) {
+export default function load(req, params) {
   return new Promise((resolve) => {
     // make async call to database
     setTimeout(() => {
-      resolve(getOutfits(req));
+      resolve(getOutfits(req, params));
 
     }, 1000); // simulate async load
   });

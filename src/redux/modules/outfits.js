@@ -53,10 +53,12 @@ export function isLoaded(globalState) {
 }
 
 // Action Creator
-export function load() {
+export function load(currentWeather) {
+  const url = `/outfit/load/${currentWeather.temperature}/${currentWeather.time}`;
+  
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/outfit/load/3/December')
+    promise: (client) => client.get(url)
   };
 }
 

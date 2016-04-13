@@ -27,12 +27,12 @@ function mapData(data){
 
   if (mappedData){
     mappedData.currWeather = mapCurrentWeather(data);
-    console.info('mapCurrentWeather successfully');
+    // console.info('mapCurrentWeather successfully');
   }else{
     console.info('failed to map weatherData');
   }
 
-  console.info('mapped');
+  // console.info('mapped');
   return mappedData;
 }
 
