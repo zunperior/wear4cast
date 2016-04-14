@@ -53,9 +53,9 @@ export function isLoaded(globalState) {
 }
 
 // Action Creator
-export function load(currentWeather) {
-  const url = `/outfit/load/${currentWeather.temperature}/${currentWeather.time}`;
-  
+export function load(currentWeather, style) {
+  const url = `/outfit/load/${currentWeather.temperature}/${currentWeather.time}/${currentWeather.condition}/${style}`;
+
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get(url)

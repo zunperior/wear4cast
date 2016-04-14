@@ -1,53 +1,44 @@
-import Enum from 'es6-enum';
+// Conditions
+const SNOW = 'SNOW';
+const RAIN = 'RAIN';
+const WIND = 'WIND';
+const ALL = 'ALL';
 
-export const CONDITION = Enum(
-  'SNOW',
-  'RAIN',
-  'WIND',
-  'ALL');
+// Seasons
+const WINTER = 'WINTER';
+const SPRING = 'SPRING';
+const SUMMER = 'SUMMER';
+const FALL = 'FALL';
 
-//
-//  WINTER_SUPERCOLD    WINTER_COLD   WINTER_NORMAL   WINTER_WARM  WINTER_HOT
-//                                                                 SPRING_SUPERCOLD    SPRING_COLD   SPRING_NORMAL      SPRING_WARM   SPRING_HOT
-//                                                                 FALL_SUPERCOLD      FALL_COLD     FALL_NORMAL        FALL_WARM     FALL_HOT
-//                                                                                                   SUMMER_SUPERCOLD           SUMMER_COLD          SUMMER_NORMAL    SUMMER_WARM    SUMMER_HOT
-// ------------------+--------------+---------------+------------+-------------------+-------------+------------------+-------------+--------------+----------------+--------------+-----------------
-//                 -21             -8              -1            2                   5             9                 14            17             20               27             32
-export const SEASON = Enum(
-  'WINTER',
-  'SPRING',
-  'SUMMER',
-  'FALL'
-);
+// Temperature Levels
 
-export const TEMP_LEVEL = Enum(
-  'SUPERCOLD',
-  'COLD',
-  'NORMAL',
-  'WARM',
-  'HOT'
-);
+const SUPERCOLD = 'SUPERCOLD';
+const COLD = 'COLD';
+const NORMAL = 'NORMAL';
+const WARM = 'WARM';
+const HOT = 'HOT';
 
-export const  STYLE = Enum(
-  'OUTDOORS',
-  'SPORTY',
-  'BEACH',
-  'RESORT',
-  'RESORT_DRESSEDUP',
-  'CLUB',
-  'FORMAL',
-  'CASUAL',
-  'SMART_CASUAL',
-  'BUSINESS'
-);
+
+// Styles
+const OUTDOORS = 'OUTDOORS';
+const SPORTY = 'SPORTY';
+const BEACH = 'BEACH';
+const RESORT = 'RESORT';
+const RESORT_DRESSEDUP = 'RESORT_DRESSEDUP';
+const CLUB = 'CLUB';
+const FORMAL = 'FORMAL';
+const CASUAL = 'CASUAL';
+const SMART_CASUAL = 'SMART_CASUAL';
+const BUSINESS = 'BUSINESS';
+
 
 const initialOutfits = [
     { id: 5,
       url: 'http://oi68.tinypic.com/t4x08z.jpg',
-      season: SEASON.WINTER,
-      temp_level: TEMP_LEVEL.COLD,
-      conditions: [CONDITION.SNOW, CONDITION.WIND],
-      style: STYLE.BUSINESS,
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
       items:
         [
           { id: 51,
@@ -66,10 +57,10 @@ const initialOutfits = [
     },
 		{ id: 6,
       url: 'http://oi63.tinypic.com/2nr3hoi.jpg',
-      season: SEASON.WINTER,
-      temp_level: TEMP_LEVEL.COLD,
-      conditions: [CONDITION.SNOW, CONDITION.WIND],
-      style: STYLE.BUSINESS,
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
       items:
         [
           { id: 61,
@@ -83,10 +74,10 @@ const initialOutfits = [
 
     { id: 7,
       url: 'http://oi64.tinypic.com/1zlpqn6.jpg',
-      season: SEASON.WINTER,
-      temp_level: TEMP_LEVEL.COLD,
-      conditions: [CONDITION.SNOW, CONDITION.WIND],
-      style: STYLE.BUSINESS,
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
       items:
         [
           { id: 71,
@@ -110,7 +101,7 @@ function inRange(val, min, max){
   return (val>=min && val<=max);
 }
 
-function getFilter(temperature, date)
+function getFilter(temperature, date, condition, style)
 {
   //
   //  WINTER_SUPERCOLD    WINTER_COLD   WINTER_NORMAL   WINTER_WARM  WINTER_HOT
@@ -120,48 +111,129 @@ function getFilter(temperature, date)
   // ------------------+--------------+---------------+------------+-------------------+-------------+------------------+-------------+--------------+----------------+--------------+-----------------
   //                 -21             -8              -1            2                   5             9                 14            17             20               27             32
 
+  const month = new Date(date).getMonth();
+  const springOrFall = month > 5 ? SPRING : FALL;
   // WINTER_SUPERCOLD
-  if (temperature <= -21){
-    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.SUPERCOLD}];
+  if (temperature < -20){
+    return  [{season: WINTER, temp_level: SUPERCOLD, condition: condition, style: style}];
   }
 
   // WINTER_COLD
   if (inRange(temperature, -20, -8)){
-    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.COLD}];
+    return  [{season: WINTER, temp_level: COLD, condition: condition, style: style}];
   }
 
   // WINTER_NORMAL
   if (inRange(temperature, -7, -1)){
-    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.NORMAL}];
+    return  [{season: WINTER, temp_level: NORMAL, condition: condition, style: style}];
   }
 
   // WINTER_WARM
   if (inRange(temperature, 0, 2)){
-    return  [{season: SEASON.WINTER, temp_level: TEMP_LEVEL.NORMAL}];
+    return  [{season: WINTER, temp_level: NORMAL, condition: condition, style: style}];
   }
 
   // WINTER_HOT, SPRING_SUPERCOLD, FALL_SUPERCOLD
-  if (inRange(temperature, 0, 2)){
-    // TODO: 
+  if (inRange(temperature, 3, 5)){
+    return  [
+      {season: WINTER, temp_level: SUPERCOLD, condition: condition, style: style},
+      {season: springOrFall, temp_level: SUPERCOLD, condition: condition, style: style},
+    ];
   }
 
+  // SPRING_COLD, FALL_COLD
+  if (inRange(temperature, 6, 9)){
+    return  [{season: springOrFall, temp_level: COLD, condition: condition, style: style}];
+  }
 
+  // SPRING_NORMAL, FALL_NORMAL, SUMMER_SUPERCOLD
+  if (inRange(temperature, 10, 14)){
+    return  [
+      {season: SUMMER, temp_level: SUPERCOLD, condition: condition, style: style},
+      {season: springOrFall, temp_level: NORMAL, condition: condition, style: style},
+    ];
+  }
+
+  // SPRING_WARM, FALL_WARM, SUMMER_COLD
+  if (inRange(temperature, 15, 17)){
+    return  [
+      {season: SUMMER, temp_level: COLD, condition: condition, style: style},
+      {season: springOrFall, temp_level: WARM, condition: condition, style: style},
+    ];
+  }
+
+  // SPRING_HOT, FALL_HOT, SUMMER_COLD
+  if (inRange(temperature, 18, 20)){
+    return  [
+      {season: SUMMER, temp_level: COLD, condition: condition, style: style},
+      {season: springOrFall, temp_level: HOT, condition: condition, style: style},
+    ];
+  }
+
+  // SUMMER_NORMAL
+  if (inRange(temperature, 21, 27)){
+    return  [{season: SUMMER, temp_level: NORMAL, condition: condition, style: style}];
+  }
+
+  // SUMMER_WARM
+  if (inRange(temperature, 28, 32)){
+    return  [{season: SUMMER, temp_level: WARM, condition: condition, style: style}];
+  }
+
+  // SUMMER_HOT
+  if (temperature > 32){
+    return  [{season: SUMMER, temp_level: HOT, condition: condition, style: style}];
+  }
 }
-export function getOutfits(req, params) {
-  console.log(params);
-  let outfits = req.session.outfits;
-  if (!outfits) {
-    outfits = initialOutfits;
-    req.session.outfits = outfits;
-  }
+
+function matchExact(filter) {
+  return function(outfit) {
+    for (var filterItem of filter) {
+      // Outfit has matching season and temperature level
+      if (outfit.style === filterItem.style && outfit.season === filterItem.season && outfit.temp_level === filterItem.temp_level){
+
+        // No conditions are specified for the outfit (means good for any weather)
+        if (!outfit.conditions || outfit.conditions.length === 0){
+          return true;
+        }
+
+        for(var outfitCondition of outfit.conditions){
+          // outfit is good for any weather
+          if (outfitCondition === ALL){
+            return true;
+          }
+
+          // outfit matches weather condition
+          if (outfitCondition === filterItem.condition){
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
+  };
+}
+
+export function getOutfits(req, filter) {
+
+  let outfits = initialOutfits.filter(matchExact(filter));
+  req.session.outfits = outfits;
+
   return outfits;
 }
 
 export default function load(req, params) {
+
   return new Promise((resolve) => {
     // make async call to database
     setTimeout(() => {
-      resolve(getOutfits(req, params));
+      resolve(getOutfits(req, getFilter(
+        params[0], // temperature
+        params[1], // date
+        params[2], // condition
+        params[3]  // style
+      )));
 
     }, 1000); // simulate async load
   });

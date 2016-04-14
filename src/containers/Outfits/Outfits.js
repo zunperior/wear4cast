@@ -62,8 +62,7 @@ function selectNextOutfit(outfits, currentOutfitIndex, changeOutfit)
     var globState = getState();
     if (!isLoaded(globState)) {
       //var currWeather = prepareCurrentWeatherData(globState.currentWeather.currentWeather);
-
-      return dispatch(loadOutfits({ temperature: 5, time: '2016-04-12 16:58:49' }));
+      return dispatch(loadOutfits({ temperature: -10, time: '2016-01-12 16:58:49', condition: 'SNOW' }, 'BUSINESS'));
     }
   }
 }])
