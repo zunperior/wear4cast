@@ -57,8 +57,8 @@ const initialOutfits = [
     },
 		{ id: 6,
       url: 'http://oi63.tinypic.com/2nr3hoi.jpg',
-      season: WINTER,
-      temp_level: COLD,
+      season: SPRING,
+      temp_level: NORMAL,
       conditions: [SNOW, WIND],
       style: BUSINESS,
       items:
@@ -74,8 +74,8 @@ const initialOutfits = [
 
     { id: 7,
       url: 'http://oi64.tinypic.com/1zlpqn6.jpg',
-      season: WINTER,
-      temp_level: COLD,
+      season: SPRING,
+      temp_level: NORMAL,
       conditions: [SNOW, WIND],
       style: BUSINESS,
       items:
@@ -98,7 +98,9 @@ const initialOutfits = [
 
 // inclusive range check
 function inRange(val, min, max){
-  return (val>=min && val<=max);
+  const res =  (val>=min && val<=max);
+  console.info(`inRange: ${res}, val:${val} min:${min} max:${max}`);
+  return res;
 }
 
 function getFilter(temperature, date, condition, style)
@@ -112,7 +114,7 @@ function getFilter(temperature, date, condition, style)
   //                 -21             -8              -1            2                   5             9                 14            17             20               27             32
 
   const month = new Date(date).getMonth();
-  const springOrFall = month > 5 ? SPRING : FALL;
+  const springOrFall = month > 5 ? FALL : SPRING;
   // WINTER_SUPERCOLD
   if (temperature < -20){
     return  [{season: WINTER, temp_level: SUPERCOLD, condition: condition, style: style}];
@@ -197,6 +199,11 @@ function matchExact(filter) {
           return true;
         }
 
+        // filter has no weather limiting conditions
+        if (filterItem.condition === 'ANY'){
+          return true;
+        }
+
         for(var outfitCondition of outfit.conditions){
           // outfit is good for any weather
           if (outfitCondition === ALL){
@@ -218,6 +225,13 @@ function matchExact(filter) {
 export function getOutfits(req, filter) {
 
   let outfits = initialOutfits.filter(matchExact(filter));
+  // if (outfits && outfits.length > 0){
+  //   console.info(`managed to match ${outfits.length} outfits`)
+  // }
+  // else{
+  //   console.info('failed to match any outfits');
+  // }
+
   req.session.outfits = outfits;
 
   return outfits;
