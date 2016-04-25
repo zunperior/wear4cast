@@ -1,7 +1,19 @@
 @import "../../theme/variables.scss";
 
 .currentWeather {
-  dd {
-    margin-bottom: 15px;
+  // dd {
+  //   margin-bottom: 15px;
+  // }
+  // span {
+  //   font-size: 5vh;
+  //
+  // }
+  .temperature {
+    font-size: 6vh;
+    padding-top: 20px;
+  }
+
+  .weatherCondition {
+    font-size: 3vh;
   }
 }

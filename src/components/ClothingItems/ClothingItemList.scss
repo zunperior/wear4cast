@@ -1,0 +1,26 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p.clothingItemDescription {
+    text-align: center;
+}
+
+.clothingItem {
+    width: 250px;
+    min-height: 250px;
+    max-height: auto;
+    float: center;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 12px;
+    margin-right:12px;
+    padding: 6px;
+}
+
+.shadow {
+  -webkit-box-shadow: 6px 6px 16px -1px rgba(220,220,220,1);
+  -moz-box-shadow: 6px 6px 16px -1px rgba(220,220,220,1);
+  box-shadow: 6px 6px 16px -1px rgba(220,220,220,1);
+}

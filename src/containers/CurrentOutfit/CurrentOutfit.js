@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-
 @connect(
     state => ({
       currentOutfit: state.outfits.selectedOutfit,
@@ -16,21 +15,20 @@ export default class CurrentOutfit extends Component{
     })
   };
 
-
-
   render() {
     const {currentOutfit} = this.props;
-
-    return(
+    //const styles = require('./CurrentOutfit.scss');
+    const inlinestyles = {height: '80vh', width: 'auto'};
+    return (
       <div>
-          <h1>{'Current Outfit'}</h1>
-          {currentOutfit &&
+      {currentOutfit &&
               <img key={currentOutfit.id}
                 src={currentOutfit.url}
+                //className={styles.outfitImage}
+                style= {inlinestyles}
               />
-          }
-    </div>
+      }
+      </div>
     );
   }
-
 }

@@ -1,25 +1,44 @@
 import React, {PropTypes} from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 function renderClosingItem(clothingItem){
+  const styles = require('./ClothingItemList.scss');
+
   return (
-    <div key = {clothingItem.id}>
-      <p>{clothingItem.descr}</p>
+    <div key = {clothingItem.id} className={styles.clothingItem + ' ' + styles.shadow}>
       <img key={clothingItem.id}
         src={clothingItem.imgUrl}
       />
-      <p>{clothingItem.price}</p>
-      <a href={clothingItem.link}>{'Buy'}</a>
+    <p className={styles.clothingItemDescription}>
+      {clothingItem.descr}
+    </p>
+    <p className={styles.clothingItemDescription}>
+      {'$'}{clothingItem.price}{'\u00A0 \u00A0'}
+      <a className={'btn btn-success btn-sm'} href={clothingItem.link} role={'button'}>
+        <i className={'fa fa-shopping-cart'} />{'\u00A0'}{'BUY'}
+      </a>
+    </p>
+
     </div>
   );
 }
+
 const ClothingItemList = (props) => {
   const {clothingItemList} = props;
   //const clothingItemList = ['one', 'two', 'three'];
+  // const inlinestyles = {height: '80vh', width: 'auto', overflowY: 'scroll'};
   return (
-    <div>
-      {
-        clothingItemList.map(renderClosingItem)
-      }
-   </div>
+    <Scrollbars universal style={{ width: '300', height: '80vh' }}>
+
+        {/*<div style = {inlinestyles}>*/}
+        <div>
+          {
+            clothingItemList.map(renderClosingItem)
+          }
+        </div>
+
+    </Scrollbars>
+
   );
 };
 

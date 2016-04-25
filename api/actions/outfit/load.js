@@ -33,8 +33,92 @@ const BUSINESS = 'BUSINESS';
 
 
 const initialOutfits = [
+    { id: 13,
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look13.jpg',
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
+      items:
+        [
+          { id: 131,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894202',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look13_item1.jpg',
+            descr: 'BLOCK STRIPE TEE',
+            price: '49.50'
+          },
+          { id: 132,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7889648',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look13_item2.jpg',
+            descr: 'DENTON STRETCH COTTON CHINO',
+            price: '109.50'
+          },
+          { id: 133,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893516',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look13_item3.jpg',
+            descr: 'MODERN TRENCH',
+            price: '395.00'
+          }
+        ]
+    },
+    { id: 17,
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look17.jpg',
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
+      items:
+        [
+          { id: 171,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894204',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look17_item1.jpg',
+            descr: 'FLOWER POCKET TEE',
+            price: '49.50'
+          },
+          { id: 172,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893642',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look17_item2.jpg',
+            descr: 'STRAIGHT FIT SLIM CHINO',
+            price: '109.50'
+          },
+          { id: 173,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893508',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look17_item3.jpg',
+            descr: 'UTILITY WINDBREAKER',
+            price: '250.00'
+          }
+        ]
+    },
+    { id: 6,
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look06.jpg',
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
+      items:
+        [
+          { id: 61,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894414',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look06_item1.jpg',
+            descr: 'SLIM FIT PRINT SHIRT',
+            price: '89.50'
+          },
+          { id: 62,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893537',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look06_item2.jpg',
+            descr: 'COLORED DENTON CHINO',
+            price: '129.50'
+          },
+          { id: 63,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893797',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look06_item3.jpg',
+            descr: 'DOWNTOWN FIELD JACKET',
+            price: '395.00'
+          }
+        ]
+    },
     { id: 5,
-      url: 'http://oi68.tinypic.com/t4x08z.jpg',
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look05.jpg',
       season: WINTER,
       temp_level: COLD,
       conditions: [SNOW, WIND],
@@ -42,55 +126,122 @@ const initialOutfits = [
       items:
         [
           { id: 51,
-            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=85424&vid=1&pid=762150003',
-            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0006/518/296/cn6518296.jpg',
-            descr: 'Tailored-Fit Navy Italian Wool Suit Jacket',
-            price: 495.00
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894164',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look05_item1.jpg',
+            descr: 'CUSTOM FIT CREWNECK SWEATER',
+            price: '119.50'
           },
           { id: 52,
-            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1050643&vid=1&pid=184617003',
-            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/776/018/cn10776018.jpg',
-            descr: 'Camden-Fit Non-Iron Oxford Shirt',
-            price: 110.00
-          }
-        ]
-    },
-		{ id: 6,
-      url: 'http://oi63.tinypic.com/2nr3hoi.jpg',
-      season: SPRING,
-      temp_level: NORMAL,
-      conditions: [SNOW, WIND],
-      style: BUSINESS,
-      items:
-        [
-          { id: 61,
-            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1053856&vid=1&pid=184993013',
-            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/743/517/cn10743517.jpg',
-            descr: 'Vintage U-Neck Tee',
-            price: 35.00
-          }
-        ]
-    },
-
-    { id: 7,
-      url: 'http://oi64.tinypic.com/1zlpqn6.jpg',
-      season: SPRING,
-      temp_level: NORMAL,
-      conditions: [SNOW, WIND],
-      style: BUSINESS,
-      items:
-        [
-          { id: 71,
-            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1051348&vid=1&pid=724291003',
-            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/459/290/cn10459290.jpg',
-            descr: 'Double-Breasted Trench',
-            price: 310.00
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893537',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look05_item2.jpg',
+            descr: 'DENTON STRETCH COTTON CHINO',
+            price: '109.50'
           },
-          { id: 72,
-            link: 'http://bananarepublic.gapcanada.ca/browse/product.do?cid=1051345&vid=1&pid=175290003',
-            imgUrl: 'http://bananarepublic.gapcanada.ca/webcontent/0010/575/855/cn10575855.jpg',
-            descr: 'Water-Repellent Cotton Jacket',
-            price: 124.00
+          { id: 53,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893797',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look05_item3.jpg',
+            descr: 'DOWNTOWN FIELD JACKET',
+            price: '395.00'
+          }
+        ]
+    },
+    { id: 18,
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look18.jpg',
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
+      items:
+        [
+          { id: 181,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894276',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look18_item1.jpg',
+            descr: 'SLIM FIT INDIGO POLO',
+            price: '89.50'
+          },
+          { id: 182,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893776',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look18_item2.jpg',
+            descr: 'FLORAL DENTON CHINO',
+            price: '139.50'
+          }
+        ]
+    },
+    { id: 20,
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look20.jpg',
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
+      items:
+        [
+          { id: 201,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894184',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look20_item1.jpg',
+            descr: 'CLASSIC HEATHERED TEE',
+            price: '45.50'
+          },
+          { id: 202,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7889654',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look20_item2.jpg',
+            descr: 'TAILORED CLUB SHORT',
+            price: '69.50'
+          },
+          { id: 203,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894183',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look20_item3.jpg',
+            descr: 'MOCKNECK STRIPE HOODIE',
+            price: '179.50'
+          }
+        ]
+    },
+    { id: 20,
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look20.jpg',
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
+      items:
+        [
+          { id: 201,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894184',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look20_item1.jpg',
+            descr: 'CLASSIC HEATHERED TEE',
+            price: '45.50'
+          },
+          { id: 202,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7889654',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look20_item2.jpg',
+            descr: 'TAILORED CLUB SHORT',
+            price: '69.50'
+          },
+          { id: 203,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7894183',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look20_item3.jpg',
+            descr: 'MOCKNECK STRIPE HOODIE',
+            price: '179.50'
+          }
+        ]
+    },
+    { id: 19,
+      url: 'https://s3.amazonaws.com/outfits.wear4cast.com/Look19.jpg',
+      season: WINTER,
+      temp_level: COLD,
+      conditions: [SNOW, WIND],
+      style: BUSINESS,
+      items:
+        [
+          { id: 191,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893922',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look19_item1.jpg',
+            descr: 'NEW YORK FIT 80S TWO-PLY SHIRT',
+            price: '79.50'
+          },
+          { id: 192,
+            link: 'http://usa.tommy.com/shop/en/thb2cus/7893718',
+            imgUrl: 'https://s3.amazonaws.com/clothingitems.wear4cast.com/Look19_item2.jpg',
+            descr: 'FLORAL SWIM TRUNK',
+            price: '69.50'
           }
         ]
     },
@@ -99,7 +250,7 @@ const initialOutfits = [
 // inclusive range check
 function inRange(val, min, max){
   const res =  (val>=min && val<=max);
-  console.info(`inRange: ${res}, val:${val} min:${min} max:${max}`);
+  // console.info(`inRange: ${res}, val:${val} min:${min} max:${max}`);
   return res;
 }
 
@@ -222,16 +373,16 @@ function matchExact(filter) {
   };
 }
 
+function matchAll(filter){
+  return function(outfit) {
+    return true;
+  }
+}
+
 export function getOutfits(req, filter) {
 
-  let outfits = initialOutfits.filter(matchExact(filter));
-  // if (outfits && outfits.length > 0){
-  //   console.info(`managed to match ${outfits.length} outfits`)
-  // }
-  // else{
-  //   console.info('failed to match any outfits');
-  // }
-
+  // let outfits = initialOutfits.filter(matchExact(filter));
+  let outfits = initialOutfits.filter(matchAll(filter));
   req.session.outfits = outfits;
 
   return outfits;

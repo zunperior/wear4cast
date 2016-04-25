@@ -1,8 +1,13 @@
 import moment from 'moment-timezone';
 import coordinateTimezone from 'coordinate-tz';
 
+export function getTimezone(longitude, latitude){
+  return coordinateTimezone.calculate(latitude, longitude).timezone;
+}
 
-export default function localDateTime(longitude, latitude, unixDateTime){
-  const timezone = coordinateTimezone.calculate(latitude, longitude).timezone;
-  return moment(moment.unix(unixDateTime).ToDate()).tz(timezone).format('YYYY-MM-DD HH:mm:ss');
+export function localDateTime(unixDateTime, timezone){
+  const momentUnix = moment.unix(unixDateTime);
+  const unixDateTimeObj = momentUnix.toDate();
+  const localTime = moment(unixDateTimeObj).tz(timezone);
+  return localTime;
 }
