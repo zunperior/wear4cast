@@ -25,10 +25,8 @@ function renderClosingItem(clothingItem){
 
 const ClothingItemList = (props) => {
   const {clothingItemList} = props;
-  //const clothingItemList = ['one', 'two', 'three'];
-  // const inlinestyles = {height: '80vh', width: 'auto', overflowY: 'scroll'};
   return (
-    <Scrollbars universal style={{ width: '300', height: '80vh' }}>
+    <Scrollbars universal style={{ width: '300', height: '95vh' }}>
 
         {/*<div style = {inlinestyles}>*/}
         <div>

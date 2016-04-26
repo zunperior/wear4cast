@@ -18,7 +18,7 @@ export default class CurrentOutfit extends Component{
   render() {
     const {currentOutfit} = this.props;
     //const styles = require('./CurrentOutfit.scss');
-    const inlinestyles = {height: '80vh', width: 'auto'};
+    const inlinestyles = {height: '95vh', width: 'auto'};
     return (
       <div>
       {currentOutfit &&

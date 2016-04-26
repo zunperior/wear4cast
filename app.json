@@ -1,6 +1,6 @@
 {
   "name": "wear4cast",
-  "description": "What to wear based on weather forcast?",
+  "description": "What to wear based on the weather forcast?",
   "repository": "https://github.com/zunperior/wear4cast",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": []

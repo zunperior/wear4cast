@@ -37,7 +37,6 @@ function selectNextOutfit(outfits, currentOutfitIndex, changeOutfit)
     if(currWeather && currWeather.temperature && currWeather.datePortion && currWeather.condition){
       return dispatch(loadOutfits({ temperature: currWeather.temperature, date: currWeather.datePortion, condition: currWeather.condition }, 'BUSINESS'));
     }
-    //return dispatch(loadOutfits({ temperature: -10, time: '2016-01-12 16:58:49', condition: 'SNOW' }, 'BUSINESS'));
   }
 }])
 @connect(

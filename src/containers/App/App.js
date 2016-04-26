@@ -62,13 +62,14 @@ export default class App extends Component {
 
 
   render() {
-    const {user} = this.props;
+    //const {user} = this.props;
     const styles = require('./App.scss');
 
     return (
-      <div className={styles.app}>
+      <div>
+      {/*<div className={styles.app}>*/}
         <Helmet {...config.app.head}/>
-        <Navbar fixedTop>
+        {/*<Navbar fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
               <IndexLink to="/"
@@ -128,12 +129,11 @@ export default class App extends Component {
               </NavItem>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
-
-        <div className={styles.appContent}>
+        </Navbar>*/}
+        <div>
+        {/*<div className={styles.appContent}>*/}
           {this.props.children}
         </div>
-        <InfoBar/>
       </div>
     );
   }
